@@ -32,9 +32,9 @@ let cat (filenames : string list) : string option =
         catHelp filenames
 
 
-//HEJ MED DIG!
+
 //9g1
-///<summary> This function uses the functions (readFile) and (cat) to return the combined contents of an arbitrary number of text files
+/// <summary> This function uses the functions (readFile) and (cat) to return the combined contents of an arbitrary number of text files
 /// However where the contents of the files is reversed </summary>
 /// <param name = "filenames"> A string list containing the names of text files </param>
 /// <returns> The combined contents of the given files as a string option, but where the contents of the files is in reverse order
