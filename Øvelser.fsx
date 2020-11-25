@@ -38,15 +38,7 @@ let facFailwith (n : int) : int =
 facFailwith 40000
 facFailwith 0
 
-// //Opgave 3
-// let facOption (n : int) : int option =
-//         let rec fac2 (n1 : int) =
-//             match n1 with
-//             | x when x = 0 -> 1
-//             | _ -> n1 * (fac2 (n1 - 1))
-//         match (fac n) with
-//         | x when x = 0 -> 1
-//         | _ -> n * (facOption (n1 - 1))
+//HEJ MED DIG
 
 
     
