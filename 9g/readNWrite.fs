@@ -13,7 +13,7 @@ let readFile (filename : string) : string option =
   with
     | ex -> None
 
-
+//HEJ PETER
 //9g1
 ///<summary> This function uses the function (readFile) to return the combined contents of an arbitrary number of text files </summary>
 /// <remarks> If given an empty string list the function returns None </remarks>
