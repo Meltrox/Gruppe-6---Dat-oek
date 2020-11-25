@@ -31,6 +31,8 @@ let cat (filenames : string list) : string option =
                           | None -> None //Hvis en af filerne ikke eksisterer vil (readFile) retunere None
         catHelp filenames
 
+
+//HEJ MED DIG!
 //9g1
 ///<summary> This function uses the functions (readFile) and (cat) to return the combined contents of an arbitrary number of text files
 /// However where the contents of the files is reversed </summary>
