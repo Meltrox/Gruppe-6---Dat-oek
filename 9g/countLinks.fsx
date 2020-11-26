@@ -10,27 +10,30 @@ let readUrl url =
     let reader = new System.IO.StreamReader(stream)
     reader.ReadToEnd()
 
-let matchString = "<a href"
-let urlString = readUrl "https://www.valutakurser.dk/"
-let countLinks (str : string) =
+
+/// <summary> This function takes an url and counts the occurrences of links to other pages </summary>
+/// <param name = "url"> For example "https:/valutakurser.dk"  </param>
+/// <returns> The amount of links to other pages on the given url </returns>
+let countLinks (url : string) : int =
+    let matchString = "<a href"
     let mutable counter = 0
+    let str = readUrl url
     for i in 0..(str.Length - matchString.Length) do
         if str.[i..(i+6)] = matchString then
             counter <- counter + 1
         else
             ()
     counter
-printfn "%A" (countLinks urlString)
 
+exception ToManyLinks of string
 [<EntryPoint>]
 let main args =
     try
         if args.Length > 1 then
             raise (ToManyLinks "Error: Function given to many URL-links. Can only be given 1")
         else
-            let str = args.[0]
-            let urlString = readUrl str
-            printfn "%A" (countLinks urlString)
+            let strUrl = args.[0]
+            printfn "%A" (countLinks strUrl)
             0
     with
         | ToManyLinks msg -> printfn "%A" msg; 1
@@ -56,17 +59,3 @@ let main args =
 // let url = "http://h2020.myspecies.info"
 // exception ToManyLinks of string
 
-[<EntryPoint>]
-let main args =
-    try
-        if args.Length > 1 then
-            raise (ToManyLinks "Error: Function given to many URL-links. Can only be given 1")
-        else
-            let str = args.[0]
-            let urlString = readUrl str
-            printfn "%A" (countLinks urlString)
-            0
-    with
-        | ToManyLinks msg -> printfn "%A" msg; 1
-        | ex -> printfn "%A" ex; 1
-    
