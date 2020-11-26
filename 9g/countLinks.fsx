@@ -1,6 +1,6 @@
 
 
-//These two functions is used to pull read the html code from an url
+//These two functions is used to pull and read the html code from a given url
 let url2Stream url = 
     let url = System.Uri url
     let request = System.Net.WebRequest.Create url
@@ -29,17 +29,21 @@ let countLinks (url : string) : int =
 
 
 exception ToManyLinks of string
+exception NoUrlGiven of string
 [<EntryPoint>]
 let main args =
     try
         if args.Length > 1 then
             raise (ToManyLinks "Error: Function given to many URL-links. Can only be given 1")
+        elif args.Length = 0 then
+            raise (NoUrlGiven "No url is given")
         else
             let strUrl = args.[0]
             printfn "%A" (countLinks strUrl)
             0
     with
         | ToManyLinks msg -> printfn "%A" msg; 1
+        | NoUrlGiven msg -> printfn "%A" msg; 1
         | Ex -> printfn "%A" "Unknown error! Check that the url is given as a https:/... and is spelled correct" ; 1
 
 
