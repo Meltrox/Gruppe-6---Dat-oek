@@ -17,11 +17,11 @@ let readUrl url =
 /// <param name = "url"> For example "https:/valutakurser.dk"  </param>
 /// <returns> The amount of links to other pages on the given url </returns>
 let countLinks (url : string) : int =
-    let matchString = "<a href"
+    let matchString = "<a"
     let mutable counter = 0
     let str = readUrl url
     for i in 0..(str.Length - matchString.Length) do
-        if str.[i..(i+6)] = matchString then
+        if str.[i..(i+1)] = matchString then
             counter <- counter + 1
         else
             ()
