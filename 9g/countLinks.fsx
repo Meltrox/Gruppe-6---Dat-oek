@@ -1,4 +1,6 @@
 
+
+//These two functions is used to pull read the html code from an url
 let url2Stream url = 
     let url = System.Uri url
     let request = System.Net.WebRequest.Create url
@@ -25,6 +27,7 @@ let countLinks (url : string) : int =
             ()
     counter
 
+
 exception ToManyLinks of string
 [<EntryPoint>]
 let main args =
@@ -37,7 +40,7 @@ let main args =
             0
     with
         | ToManyLinks msg -> printfn "%A" msg; 1
-        | ex -> printfn "%A" ex; 1
+        | Ex -> printfn "%A" "Unknown error! Check that the url is given as a https:/... and is spelled correct" ; 1
 
 
 // open System.Net
